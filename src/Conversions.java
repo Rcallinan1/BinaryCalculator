@@ -3,50 +3,50 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 
 public class Conversions extends Application{
-    private static Stage primaryStage; // **Declare static Stage**
+    private static Stage primaryStage;
 
 
-
-    public static ArrayList<String> DecToOther(String number, int type){
+    /**
+     * Converts a decimal input to the desired conversion type
+     * @param number Input to be converted
+     * @param type Conversion method desired
+     * @return The converted number
+     */
+    private static ArrayList<String> DecToOther(String number, int type){
         int decimal = Integer.valueOf(number);
-        ArrayList<String> binary_arr = new ArrayList<String>();
+        ArrayList<String> binary_arr = new ArrayList<>();
         while(decimal != 0){
             int mod = decimal % type;
-            if(mod == 10){
-                binary_arr.add("A");
-            }
-            else if(mod == 11){
-                binary_arr.add("B");
-            }
-            else if(mod == 12){
-                binary_arr.add("C");
-            }
-            else if(mod == 13){
-                binary_arr.add("D");
-            }
-            else if(mod == 14){
-                binary_arr.add("E");
-            }
-            else if(mod == 15){
-                binary_arr.add("F");
-            }
-            else {
-                binary_arr.add(Integer.toString(mod));
+            switch(mod){
+                default: binary_arr.add(Integer.toString(mod)); break;
+                case 10: binary_arr.add("A"); break;
+                case 11: binary_arr.add("B"); break;
+                case 12: binary_arr.add("C"); break;
+                case 13: binary_arr.add("D"); break;
+                case 14: binary_arr.add("E"); break;
+                case 15: binary_arr.add("F"); break;
             }
             decimal = decimal / type;
         }
         Collections.reverse(binary_arr);
         System.out.println(binary_arr);
-        return  binary_arr;
+        return binary_arr;
     }
 
-    public static double BinaryToDecimal(String number){
+    /**
+     * Converts a binary number to decimal format
+     * @param number The binary input
+     * @return The decimal number
+     */
+    private static double BinaryToDecimal(String number){
         String[] digits = number.split("");
         List<String> digitsList = Arrays.asList(digits);
         int count = digitsList.size()-1;
@@ -60,6 +60,15 @@ public class Conversions extends Application{
         System.out.println(result);
         return result;
     }
+
+    public static ArrayList<String> GetOther(String number, int type){
+        return DecToOther(number, type);
+    }
+
+    public static double GetDecimal(String number){
+        return BinaryToDecimal(number);
+    }
+
 
     public static void main(String args[]){
         launch(args);
@@ -80,7 +89,7 @@ public class Conversions extends Application{
         Parent root = FXMLLoader.load(getClass().getResource("UI.fxml"));
         Scene mainScene = new Scene(root, 600, 400);
         primaryStage.setScene(mainScene);
-        mainScene.getStylesheets().add("DecToBin.css");
+        mainScene.getStylesheets().add("main.css");
         primaryStage.show();
     }
 

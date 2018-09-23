@@ -1,7 +1,10 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class DecToBinary {
@@ -14,10 +17,9 @@ public class DecToBinary {
     Label Display3;
     @FXML
     Label Display4;
-    String text="";
-    ArrayList<String> bin_ans;
-    ArrayList<String> oct_ans;
-    ArrayList<String> hex_ans;
+    @FXML
+    private AnchorPane rootPane;
+    private String text="";
 
 
     @FXML
@@ -96,14 +98,23 @@ public class DecToBinary {
     }
     @FXML
     void Solve(ActionEvent event){
-        bin_ans = Conversions.DecToOther(text,2);
-        oct_ans = Conversions.DecToOther(text,8);
-        hex_ans = Conversions.DecToOther(text,16);
+        ArrayList<String> bin_ans;
+        ArrayList<String> oct_ans;
+        ArrayList<String> hex_ans;
+        bin_ans = Conversions.GetOther(text,2);
+        oct_ans = Conversions.GetOther(text,8);
+        hex_ans = Conversions.GetOther(text,16);
         String res_hex = String.join("", hex_ans);
         String res_bin = String.join("", bin_ans);
         String res_oct = String.join("", oct_ans);
         Display2.setText(res_bin);
         Display3.setText(res_oct);
         Display4.setText(res_hex);
+    }
+    @FXML
+    void Back() throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("UI.fxml"));
+        rootPane.setPrefWidth(600) ;
+        rootPane.getChildren().setAll(pane);
     }
 }

@@ -2,19 +2,30 @@
 
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BinaryToDec">
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BinaryToDec">
    <children>
       <Button layoutX="247.0" layoutY="14.0" mnemonicParsing="false" onAction="#Btn0" prefHeight="135.0" prefWidth="180.0" text="0" />
       <Button layoutX="427.0" layoutY="14.0" mnemonicParsing="false" onAction="#Btn1" prefHeight="135.0" prefWidth="173.0" text="1" />
       <Button layoutX="247.0" layoutY="200.0" mnemonicParsing="false" onAction="#Clear" prefHeight="54.0" prefWidth="180.0" text="Clear" />
       <Button layoutX="247.0" layoutY="149.0" mnemonicParsing="false" onAction="#Delete" prefHeight="54.0" prefWidth="180.0" text="Delete" />
       <Button layoutX="427.0" layoutY="149.0" mnemonicParsing="false" onAction="#Solve" prefHeight="105.0" prefWidth="173.0" text="Solve" />
-      <Label fx:id="Display1" layoutY="15.0" prefHeight="135.0" prefWidth="247.0" />
-      <Label fx:id="Display2" layoutY="149.0" prefHeight="135.0" prefWidth="247.0" />
+      <Label fx:id="Display1" layoutX="6.0" layoutY="14.0" prefHeight="135.0" prefWidth="247.0" textFill="WHITE">
+         <font>
+            <Font name="Perpetua Bold" size="48.0" />
+         </font></Label>
+      <Label fx:id="Display2" layoutY="149.0" prefHeight="135.0" prefWidth="247.0" textFill="WHITE">
+         <font>
+            <Font name="Perpetua" size="48.0" />
+         </font></Label>
+      <Button layoutX="247.0" layoutY="254.0" mnemonicParsing="false" onAction="#Back" prefHeight="76.0" prefWidth="354.0" text="Back" />
+      <Label fx:id="Display21" layoutX="6.0" layoutY="149.0" prefHeight="19.0" prefWidth="180.0" text="Decimal:" textFill="WHITE">
+         <font>
+            <Font name="Perpetua" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

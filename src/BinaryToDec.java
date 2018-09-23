@@ -1,16 +1,19 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
 public class BinaryToDec {
     @FXML
     Label Display1;
     @FXML
     Label Display2;
-    String text="";
-    ArrayList<Integer> ans;
+    @FXML
+    private AnchorPane rootPane;
+    private String text="";
 
     @FXML
     void Btn0(ActionEvent event){
@@ -38,7 +41,13 @@ public class BinaryToDec {
     }
     @FXML
     void Solve(ActionEvent event){
-        Display2.setText(Double.toString(Conversions.BinaryToDecimal(text)));
+        Display2.setText(Double.toString(Conversions.GetDecimal(text)));
+    }
+    @FXML
+    void Back() throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("UI.fxml"));
+        rootPane.setPrefWidth(600) ;
+        rootPane.getChildren().setAll(pane);
     }
 }
 
