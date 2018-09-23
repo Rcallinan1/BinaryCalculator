@@ -61,14 +61,13 @@ public class Conversions extends Application{
         return result;
     }
 
-    public static ArrayList<String> GetOther(String number, int type){
+    static ArrayList<String> GetOther(String number, int type) {
         return DecToOther(number, type);
     }
 
-    public static double GetDecimal(String number){
+    static double GetDecimal(String number) {
         return BinaryToDecimal(number);
     }
-
 
     public static void main(String args[]){
         launch(args);
@@ -78,24 +77,24 @@ public class Conversions extends Application{
         Conversions.primaryStage = stage;
     }
 
-    static public Stage getPrimaryStage() {
+    static Stage getPrimaryStage() {
         return Conversions.primaryStage;
+    }
+
+    static void changeWindowSize(Stage primaryStage, int width, int height) {
+        primaryStage.setWidth(width);
+        primaryStage.setHeight(height);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Conversion Calculator");
-        setPrimaryStage(primaryStage); // **Set the Stage**
+        setPrimaryStage(primaryStage);
         Parent root = FXMLLoader.load(getClass().getResource("UI.fxml"));
         Scene mainScene = new Scene(root, 600, 400);
         primaryStage.setScene(mainScene);
         mainScene.getStylesheets().add("main.css");
         primaryStage.show();
-    }
-
-    public static void changeWindowSize(Stage primaryStage, int width, int height){
-        primaryStage.setWidth(width);
-        primaryStage.setHeight(height);
     }
 }
 
